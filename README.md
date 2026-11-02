@@ -10,15 +10,14 @@ A Streamlit-based machine learning project that estimates diabetes risk from eig
 - Random Forest
 
 ## Project structure
-```text
-Diabetes-Prediction-System/
+```AI-Based-Diabetes-Prediction-System/
+│
 ├── app.py
 ├── train_model.py
+├── diabetes.csv
+├── diabetes_model.pkl
 ├── requirements.txt
-├── dataset/
-│   └── diabetes.csv
-└── model/
-    └── diabetes_model.pkl
+└── README.md
 ```
 
 ## Run locally
