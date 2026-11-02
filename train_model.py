@@ -1,19 +1,20 @@
-import pandas as pd
+from pathlib import Path
 import pickle
 
-from sklearn.model_selection import train_test_split
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
-# Dataset load
-df = pd.read_csv("dataset/diabetes.csv")
+BASE_DIR = Path(__file__).resolve().parent
+DATASET_PATH = BASE_DIR / "diabetes.csv"
+MODEL_PATH = BASE_DIR / "diabetes_model.pkl"
 
-print(df.head())
+# Load the dataset stored in the project root.
+df = pd.read_csv(DATASET_PATH)
 
-# Input and Output
 X = df.drop("Outcome", axis=1)
 y = df["Outcome"]
 
-# Train Test Split
 X_train, X_test, y_train, y_test = train_test_split(
     X,
     y,
@@ -21,19 +22,15 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-# Model
 model = RandomForestClassifier(
     n_estimators=100,
     random_state=42
 )
-
-# Training
 model.fit(X_train, y_train)
 
-# Save Model
-pickle.dump(
-    model,
-    open("model/diabetes_model.pkl", "wb")
-)
+accuracy = model.score(X_test, y_test)
+with MODEL_PATH.open("wb") as model_file:
+    pickle.dump(model, model_file)
 
-print("Model Saved Successfully")
+print(f"Model saved to: {MODEL_PATH}")
+print(f"Hold-out accuracy on this split: {accuracy:.2%}")
