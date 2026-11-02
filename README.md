@@ -2,6 +2,10 @@
 
 A Streamlit academic project that uses a Random Forest classifier to estimate the model's diabetes-risk class from eight input features in the Pima Indians Diabetes dataset.
 
+## Live demo
+
+Try the deployed Streamlit app: **[AI-Based Diabetes Prediction System](https://amit-diabetes-project.streamlit.app/)**
+
 ## Tech stack
 - Python
 - Streamlit
@@ -20,6 +24,11 @@ AI-Based-Diabetes-Prediction-System/
 └── README.md
 ```
 
+## How to use the app
+1. Open the [live demo](https://amit-diabetes-project.streamlit.app/).
+2. Enter the eight requested health-related input values.
+3. Select the prediction button to view the model's estimated probability and predicted class.
+
 ## Run locally
 Use a Python version supported by the installed Streamlit and Scikit-learn packages.
 
@@ -31,7 +40,7 @@ python -m venv .venv
 
 Windows PowerShell:
 ```powershell
-.\.venv\Scripts\Activate.ps1
+.\\.venv\\Scripts\\Activate.ps1
 ```
 
 Install dependencies and start the app:
